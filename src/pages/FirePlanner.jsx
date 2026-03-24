@@ -123,7 +123,7 @@ export default function FirePlanner() {
     const plan = calculateFirePlan(data)
     setResults(plan)
 
-    fetch('http://localhost:3001/api/fire-planner', {
+    fetch('/api/fire-planner', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...data, plan }),

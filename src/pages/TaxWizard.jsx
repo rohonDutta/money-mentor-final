@@ -110,7 +110,7 @@ export default function TaxWizard() {
     setResults(res)
 
     // Try AI insights
-    fetch('http://localhost:3001/api/tax-wizard', {
+    fetch('/api/tax-wizard', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ salary, deductions, results: res }),

@@ -73,13 +73,18 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`
-  ╔══════════════════════════════════════════╗
-  ║    🤖 AI Money Mentor — Backend Server   ║
-  ║    Running on http://localhost:${PORT}      ║
-  ║    Gemini AI: ${process.env.GEMINI_API_KEY ? '✅ Configured' : '⚠️  Not configured'}       ║
-  ╚══════════════════════════════════════════╝
-  `)
-})
+// Export for Vercel
+export default app;
+
+// Start server (only if not running as a serverless function)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`
+    ╔══════════════════════════════════════════╗
+    ║    🤖 AI Money Mentor — Backend Server   ║
+    ║    Running on http://localhost:${PORT}      ║
+    ║    Gemini AI: ${process.env.GEMINI_API_KEY ? '✅ Configured' : '⚠️  Not configured'}       ║
+    ╚══════════════════════════════════════════╝
+    `)
+  })
+}

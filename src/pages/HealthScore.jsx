@@ -189,7 +189,7 @@ export default function HealthScore() {
       setScores(computed)
 
       // Try to get AI insights
-      fetch('http://localhost:3001/api/health-score', {
+      fetch('/api/health-score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers, scores: computed }),
