@@ -1,16 +1,21 @@
-import { Calculator, Flame, HeartPulse, Home, LayoutDashboard, Sparkles } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import { Activity, Calculator, Flame, Home, LayoutDashboard, Sparkles } from 'lucide-react'
+import { NavLink, useLocation } from 'react-router-dom'
 import './Sidebar.css'
 
 const navItems = [
-  { path: '/', label: 'Home', icon: Home },
-  { path: '/health-score', label: 'Money Health Score', icon: HeartPulse },
-  { path: '/tax-wizard', label: 'Tax Wizard', icon: Calculator },
-  { path: '/fire-planner', label: 'FIRE Planner', icon: Flame },
-  { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { path: '/', icon: Home, label: 'Home' },
+  { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+  { path: '/health-score', icon: Activity, label: 'Health Score' },
+  { path: '/tax-wizard', icon: Calculator, label: 'Tax Wizard' },
+  { path: '/fire-planner', icon: Flame, label: 'FIRE Planner' },
+  { path: '/pricing', icon: Sparkles, label: 'Upgrade Pro' },
+  { path: '/about', icon: Activity, label: 'About Us' },
+  { path: '/contact', icon: Calculator, label: 'Contact Us' },
 ]
 
 export default function Sidebar() {
+  const location = useLocation()
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -38,10 +43,7 @@ export default function Sidebar() {
       </nav>
 
       <div className="sidebar-footer">
-        <div className="sidebar-badge">
-          <Sparkles size={14} />
-          <span>ET AI Hackathon 2026</span>
-        </div>
+        {/* Footer content removed */}
       </div>
     </aside>
   )

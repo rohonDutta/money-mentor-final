@@ -9,6 +9,8 @@ import {
 import { ArrowRight, Calculator, CheckCircle2, IndianRupee, Loader2, PiggyBank, Sparkles, TrendingDown } from 'lucide-react'
 import { useState } from 'react'
 import { Bar } from 'react-chartjs-2'
+import { useCredits } from '../context/CreditContext'
+import { useReview } from '../context/ReviewContext'
 import './TaxWizard.css'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend)
@@ -88,6 +90,8 @@ export default function TaxWizard() {
   const [results, setResults] = useState(null)
   const [aiInsights, setAiInsights] = useState('')
   const [loading, setLoading] = useState(false)
+  const { useCredit } = useCredits()
+  const { triggerReview } = useReview()
 
   const handleDeductionChange = (id, value) => {
     setDeductions(prev => ({ ...prev, [id]: Number(value) || 0 }))
@@ -96,6 +100,9 @@ export default function TaxWizard() {
   const handleCalculate = () => {
     const grossIncome = Number(salary.gross) || 0
     if (grossIncome <= 0) return
+
+    // Check credits before processing
+    if (!useCredit()) return;
 
     setStep('loading')
     setLoading(true)
@@ -110,7 +117,8 @@ export default function TaxWizard() {
     setResults(res)
 
     // Try AI insights
-    fetch('/api/tax-wizard', {
+    const apiUrl = import.meta.env.VITE_API_BASE_URL || ''
+    fetch(`${apiUrl}/api/tax-wizard`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ salary, deductions, results: res }),
@@ -120,10 +128,12 @@ export default function TaxWizard() {
         setAiInsights(data.insights || '')
         setStep('results')
         setLoading(false)
+        triggerReview('Tax Wizard')
       })
       .catch(() => {
         setStep('results')
         setLoading(false)
+        triggerReview('Tax Wizard')
       })
   }
 

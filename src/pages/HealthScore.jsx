@@ -11,6 +11,8 @@ import {
 import { ArrowLeft, ArrowRight, CheckCircle2, HeartPulse, Loader2, Sparkles } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { Doughnut, Radar } from 'react-chartjs-2'
+import { useCredits } from '../context/CreditContext'
+import { useReview } from '../context/ReviewContext'
 import './HealthScore.css'
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend, ArcElement)
@@ -170,6 +172,8 @@ export default function HealthScore() {
   const [aiInsights, setAiInsights] = useState('')
   const [loading, setLoading] = useState(false)
   const formRef = useRef(null)
+  const { useCredit } = useCredits()
+  const { triggerReview } = useReview()
 
   const totalSteps = questions.length
   const currentCategory = step > 0 && step <= totalSteps ? questions[step - 1] : null
@@ -182,6 +186,9 @@ export default function HealthScore() {
     if (step < totalSteps) {
       setStep(step + 1)
     } else {
+      // Check credits before processing
+      if (!useCredit()) return;
+
       // Calculate scores
       setStep(totalSteps + 1) // loading
       setLoading(true)
@@ -189,7 +196,8 @@ export default function HealthScore() {
       setScores(computed)
 
       // Try to get AI insights
-      fetch('/api/health-score', {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || ''
+      fetch(`${apiUrl}/api/health-score`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers, scores: computed }),
@@ -199,10 +207,12 @@ export default function HealthScore() {
           setAiInsights(data.insights || '')
           setStep(totalSteps + 2)
           setLoading(false)
+          triggerReview('Health Score')
         })
         .catch(() => {
           setStep(totalSteps + 2)
           setLoading(false)
+          triggerReview('Health Score')
         })
     }
   }

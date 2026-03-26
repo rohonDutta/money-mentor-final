@@ -12,6 +12,8 @@ import {
 import { ArrowRight, Calendar, Flame, Loader2, Sparkles, Target, TrendingUp, Wallet } from 'lucide-react'
 import { useState } from 'react'
 import { Doughnut, Line } from 'react-chartjs-2'
+import { useCredits } from '../context/CreditContext'
+import { useReview } from '../context/ReviewContext'
 import './FirePlanner.css'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip, Legend, ArcElement)
@@ -104,6 +106,8 @@ export default function FirePlanner() {
   const [results, setResults] = useState(null)
   const [aiInsights, setAiInsights] = useState('')
   const [loading, setLoading] = useState(false)
+  const { useCredit } = useCredits()
+  const { triggerReview } = useReview()
 
   const updateForm = (k, v) => setForm(p => ({ ...p, [k]: v }))
 
@@ -118,19 +122,32 @@ export default function FirePlanner() {
     }
     if (data.monthlyIncome <= 0) return
 
+    // Check credits before processing
+    if (!useCredit()) return;
+
     setStep('loading')
     setLoading(true)
     const plan = calculateFirePlan(data)
     setResults(plan)
 
-    fetch('/api/fire-planner', {
+    const apiUrl = import.meta.env.VITE_API_BASE_URL || ''
+    fetch(`${apiUrl}/api/fire-planner`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...data, plan }),
     })
       .then(r => r.json())
-      .then(d => { setAiInsights(d.insights || ''); setStep('results'); setLoading(false) })
-      .catch(() => { setStep('results'); setLoading(false) })
+      .then(d => {
+        setAiInsights(d.insights || '')
+        setStep('results')
+        setLoading(false)
+        triggerReview('FIRE Planner')
+      })
+      .catch(() => {
+        setStep('results')
+        setLoading(false)
+        triggerReview('FIRE Planner')
+      })
   }
 
   const fmt = (n) => '₹' + Math.round(n).toLocaleString('en-IN')

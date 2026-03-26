@@ -254,6 +254,65 @@
   flex-shrink: 0;
 }
 
+/* ── Reviews Selection ── */
+.reviews-section {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.review-display-card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.review-quote-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  opacity: 0.1;
+  color: var(--accent-blue);
+}
+
+.review-stars {
+  display: flex;
+  gap: 4px;
+  color: var(--accent-amber);
+}
+
+.review-text {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.review-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.author-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.author-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.no-reviews-note {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .stats-grid {
