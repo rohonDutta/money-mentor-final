@@ -1,4 +1,4 @@
-# AI Money Mentor — 
+# AI Money Mentor
 
 ## Problem Statement 9: AI Money Mentor
 **95% of Indians don't have a financial plan.** Financial advisors charge ₹25,000+ per year and serve only HNls. We built an AI-powered personal finance mentor that makes financial planning as accessible as checking WhatsApp.
