@@ -1,4 +1,4 @@
-import { ArrowLeft, Clock, Share2, Tag } from 'lucide-react'
+import { ArrowLeft, Calendar, Send, Sparkles } from 'lucide-react'
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './LegalContent.css' // Reusing legal content styles for typography
@@ -53,12 +53,12 @@ export default function GuideDetail() {
       <div className="legal-header" style={{ textAlign: 'left', marginBottom: '32px' }}>
         <div className="flex items-center gap-2 mb-3">
           <span className="badge badge-info">{guide.category}</span>
-          <span className="text-muted flex items-center gap-1"><Clock size={14} /> {guide.readTime}</span>
+          <span className="text-muted flex items-center gap-1"><Calendar size={14} /> {guide.readTime}</span>
         </div>
         <h1 className="text-gradient" style={{ fontSize: '2.5rem' }}>{guide.title}</h1>
         <div className="flex justify-between items-center mt-4">
           <span className="text-muted">Published on {guide.date}</span>
-          <button className="btn btn-secondary btn-sm"><Share2 size={16} /> Share</button>
+          <button className="btn btn-secondary btn-sm"><Send size={16} /> Share</button>
         </div>
       </div>
 

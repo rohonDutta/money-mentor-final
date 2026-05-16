@@ -1,4 +1,4 @@
-import { BookOpen, Clock, Tag } from 'lucide-react'
+import { ArrowRight, Calendar, Sparkles } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Guides.css'
@@ -64,19 +64,19 @@ export default function Guides() {
             className={`guide-card glass-card animate-fade-in-up stagger-${i + 1}`}
           >
             <div className={`guide-category category-${guide.color}`}>
-              <Tag size={14} />
+              <Sparkles size={14} />
               {guide.category}
             </div>
             <h3>{guide.title}</h3>
             <p>{guide.excerpt}</p>
             <div className="guide-meta">
               <span className="flex items-center gap-1">
-                <Clock size={14} /> {guide.readTime}
+                <Calendar size={14} /> {guide.readTime}
               </span>
               <span>{guide.date}</span>
             </div>
             <div className="guide-footer">
-              Read Full Article <BookOpen size={16} />
+              Read Full Article <ArrowRight size={16} />
             </div>
           </Link>
         ))}

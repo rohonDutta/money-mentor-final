@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Share2, Sparkles } from 'lucide-react'
+import { Mail, Send, Sparkles } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
@@ -21,9 +21,9 @@ export default function Footer() {
               Making premium wealth management accessible to everyone.
             </p>
             <div className="social-links">
-              <a href="#" aria-label="Share"><Share2 size={20} /></a>
-              <a href="#" aria-label="LinkedIn"><Linkedin size={20} /></a>
-              <a href="#" aria-label="GitHub"><Github size={20} /></a>
+              <a href="#" className="text-sm font-medium hover:text-blue-400 transition-colors">X (Twitter)</a>
+              <a href="#" className="text-sm font-medium hover:text-blue-600 transition-colors">LinkedIn</a>
+              <a href="#" className="text-sm font-medium hover:text-gray-400 transition-colors">GitHub</a>
             </div>
           </div>
 
