@@ -12,7 +12,7 @@ export default function Dashboard() {
 
       <div className="dash-welcome glass-card">
         <Sparkles size={32} className="dash-welcome-icon" />
-        <h2>Welcome to MoneyMentor</h2>
+        <h2>Welcome to your Money Mentor</h2>
         <p className="text-muted">
           Complete all three assessments to get a comprehensive view of your financial health.
           Each tool provides AI-powered insights and actionable recommendations.
