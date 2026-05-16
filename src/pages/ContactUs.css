@@ -108,3 +108,36 @@ textarea.input-field {
     grid-template-columns: 1fr;
   }
 }
+
+.faq-section {
+  margin-top: 80px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.faq-item {
+  padding: 32px;
+}
+
+.faq-item h4 {
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.faq-item p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}

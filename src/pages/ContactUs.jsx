@@ -146,6 +146,31 @@ export default function ContactUs() {
           )}
         </div>
       </div>
+
+      {/* FAQ Section */}
+      <section className="faq-section animate-fade-in-up stagger-3">
+        <h2 className="section-heading text-center mt-4 mb-4">
+          Frequently Asked <span className="text-gradient">Questions</span>
+        </h2>
+        <div className="faq-grid">
+          <div className="faq-item glass-card">
+            <h4>Is MoneyMentor free to use?</h4>
+            <p>Yes! Our basic financial assessment tools are free for everyone. We believe financial literacy should be accessible to all Indians.</p>
+          </div>
+          <div className="faq-item glass-card">
+            <h4>How accurate is the AI advice?</h4>
+            <p>Our AI is trained on vast amounts of Indian financial data and regulations. However, it should be used for educational purposes and not as a replacement for a certified financial advisor.</p>
+          </div>
+          <div className="faq-item glass-card">
+            <h4>Is my data secure?</h4>
+            <p>Absolutely. We use enterprise-grade encryption and never share your personal financial data with third parties without your explicit consent.</p>
+          </div>
+          <div className="faq-item glass-card">
+            <h4>Can I save my results?</h4>
+            <p>Yes, by creating an account, you can save your Health Score, Tax analysis, and FIRE roadmaps to track your progress over time.</p>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

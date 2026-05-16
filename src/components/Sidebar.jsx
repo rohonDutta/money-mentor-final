@@ -8,6 +8,7 @@ const navItems = [
   { path: '/health-score', icon: Activity, label: 'Health Score' },
   { path: '/tax-wizard', icon: Calculator, label: 'Tax Wizard' },
   { path: '/fire-planner', icon: Flame, label: 'FIRE Planner' },
+  { path: '/guides', icon: Sparkles, label: 'Financial Guides' },
   { path: '/pricing', icon: Sparkles, label: 'Upgrade Pro' },
   { path: '/about', icon: Activity, label: 'About Us' },
   { path: '/contact', icon: Calculator, label: 'Contact Us' },

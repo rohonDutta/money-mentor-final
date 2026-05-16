@@ -48,6 +48,26 @@ export default function AboutUs() {
             sophisticated multi-agent AI systems to provide insights that traditional
             calculators can't.
           </p>
+          <p>
+            Our platform leverages advanced Large Language Models (LLMs) specifically 
+            fine-tuned on Indian financial regulations, tax codes, and investment patterns. 
+            This ensures that the advice you receive is not just generic, but highly 
+            contextualized to the Indian economic landscape.
+          </p>
+        </div>
+      </section>
+
+      <section className="tech-section animate-fade-in-up stagger-4">
+        <h2 className="text-center mb-4">Our <span className="text-gradient">AI Technology</span></h2>
+        <div className="about-grid">
+          <div className="about-card glass-card">
+            <h3>Orchestrator Agent</h3>
+            <p>The brain of the system that coordinates between different specialized agents to provide a holistic financial view.</p>
+          </div>
+          <div className="about-card glass-card">
+            <h3>Tax Strategy Agent</h3>
+            <p>Deeply understands the nuances of the Income Tax Act, helping you navigate between old and new regimes effortlessly.</p>
+          </div>
         </div>
       </section>
 
